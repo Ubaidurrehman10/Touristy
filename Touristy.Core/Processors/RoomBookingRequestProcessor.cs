@@ -19,7 +19,12 @@ namespace Touristy.Core.Processors
                 throw new ArgumentNullException("bookingRequest");    
             };
 
-            _roomBookingService.Save(CreateRoomBookingObject<RoomBooking>(bookingRequest));
+            var availableRools = _roomBookingService.GetAvailableRooms(bookingRequest.Date);
+            
+            if (availableRools.Any())
+            {
+                _roomBookingService.Save(CreateRoomBookingObject<RoomBooking>(bookingRequest));
+            }
 
             return CreateRoomBookingObject<RoomBookingResult>(bookingRequest);
         }
