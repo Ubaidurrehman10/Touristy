@@ -1,0 +1,11 @@
+D:\Other-Projects\Touristsy\Touristsy.Core\bin\Debug\net10.0\Touristsy.Core.deps.json
+D:\Other-Projects\Touristsy\Touristsy.Core\bin\Debug\net10.0\Touristsy.Core.dll
+D:\Other-Projects\Touristsy\Touristsy.Core\bin\Debug\net10.0\Touristsy.Core.pdb
+D:\Other-Projects\Touristsy\Touristsy.Core\obj\Debug\net10.0\Touristsy.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Other-Projects\Touristsy\Touristsy.Core\obj\Debug\net10.0\Touristsy.Core.AssemblyInfoInputs.cache
+D:\Other-Projects\Touristsy\Touristsy.Core\obj\Debug\net10.0\Touristsy.Core.AssemblyInfo.cs
+D:\Other-Projects\Touristsy\Touristsy.Core\obj\Debug\net10.0\Touristsy.Core.csproj.CoreCompileInputs.cache
+D:\Other-Projects\Touristsy\Touristsy.Core\obj\Debug\net10.0\Touristsy.Core.dll
+D:\Other-Projects\Touristsy\Touristsy.Core\obj\Debug\net10.0\refint\Touristsy.Core.dll
+D:\Other-Projects\Touristsy\Touristsy.Core\obj\Debug\net10.0\Touristsy.Core.pdb
+D:\Other-Projects\Touristsy\Touristsy.Core\obj\Debug\net10.0\ref\Touristsy.Core.dll
