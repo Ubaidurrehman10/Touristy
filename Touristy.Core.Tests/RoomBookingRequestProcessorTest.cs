@@ -13,6 +13,7 @@ namespace Touristy.Core.Tests
         private RoomBookingRequest _request;
         private Mock<IRoomBookingService> _roomBookingServiceMock;
 
+        private List<Room> _availableRooms;
         public RoomBookingRequestProcessorTest()
         {
             //Arrange
@@ -23,7 +24,13 @@ namespace Touristy.Core.Tests
                 Date = new DateTime(2026, 09, 05)
             };
 
+            _availableRooms = new List<Room>() { new Room() };
+
             _roomBookingServiceMock = new Mock<IRoomBookingService>();
+
+            _roomBookingServiceMock.Setup(q => q.GetAvailableRooms(_request.Date))
+                .Returns(_availableRooms);
+
             _processor = new RoomBookingRequestProcessor(_roomBookingServiceMock.Object);
         }
 
@@ -70,6 +77,14 @@ namespace Touristy.Core.Tests
             savedBooking.Name.ShouldBe(_request.Name);
             savedBooking.Email.ShouldBe(_request.Email);
             savedBooking.Date.ShouldBe(_request.Date);
+        }
+
+        [Fact]
+        public void ShouldNotSaveRoomBookingRequestIfRoomNotAvailable()
+        {
+            _availableRooms.Clear();
+            _processor.BookRoom(_request);
+            _roomBookingServiceMock.Verify(q => q.Save(It.IsAny<RoomBooking>()), Times.Never);
         }
     }
 }

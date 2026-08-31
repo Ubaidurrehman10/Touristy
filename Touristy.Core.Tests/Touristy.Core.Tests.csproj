@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Touristsy.Core\Touristy.Core.csproj" />
+    <ProjectReference Include="..\Touristy.Core\Touristy.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

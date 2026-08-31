@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="Touristsy.Core.Tests/Touristsy.Core.Tests.csproj" />
-  <Project Path="Touristsy.Core/Touristy.Core.csproj" />
+  <Project Path="Touristy.Core.Tests/Touristy.Core.Tests.csproj" />
+  <Project Path="Touristy.Core/Touristy.Core.csproj" />
 </Solution>
