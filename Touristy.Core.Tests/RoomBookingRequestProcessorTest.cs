@@ -2,6 +2,7 @@
 using Shouldly;
 using Touristy.Core.DataServices;
 using Touristy.Core.Domain;
+using Touristy.Core.Enums;
 using Touristy.Core.Models;
 using Touristy.Core.Processors;
 
@@ -24,7 +25,7 @@ namespace Touristy.Core.Tests
                 Date = new DateTime(2026, 09, 05)
             };
 
-            _availableRooms = new List<Room>() { new Room() };
+            _availableRooms = new List<Room>() { new Room() { Id = 1 } };
 
             _roomBookingServiceMock = new Mock<IRoomBookingService>();
 
@@ -77,6 +78,7 @@ namespace Touristy.Core.Tests
             savedBooking.Name.ShouldBe(_request.Name);
             savedBooking.Email.ShouldBe(_request.Email);
             savedBooking.Date.ShouldBe(_request.Date);
+            savedBooking.RoomId.ShouldBe(_availableRooms.First().Id);
         }
 
         [Fact]
@@ -86,5 +88,39 @@ namespace Touristy.Core.Tests
             _processor.BookRoom(_request);
             _roomBookingServiceMock.Verify(q => q.Save(It.IsAny<RoomBooking>()), Times.Never);
         }
+
+        [Theory]
+        [InlineData(BookingResultFlag.Failure, false)]
+        [InlineData(BookingResultFlag.Success, true)]
+        public void ShouldReturnSuccessOrFailureFlagInResult(BookingResultFlag bookingResultFlag, bool isAvailable)
+        {
+            if (!isAvailable)
+            {
+                _availableRooms.Clear();
+            }
+
+            var result = _processor.BookRoom(_request);
+            bookingResultFlag.ShouldBe(result.Flag);
+        }
+
+        //[Theory]
+        //[InlineData(1, true)]
+        //[InlineData(null, false)]
+        //public void ShouldReturnRoomBookingIdInResult(int? roomBookingId, bool isAvailable)
+        //{
+        //    if (!isAvailable)
+        //    {
+        //        _availableRooms.Clear();
+        //    }
+        //    else
+        //    {
+        //        _roomBookingServiceMock.Setup(q => q.Save(It.IsAny<RoomBooking>()))
+        //        .Callback<RoomBooking>(booking =>
+        //        {
+        //            booking.RoomId = roomBookingId.Value;
+        //        });
+        //        _processor.BookRoom(_request);
+        //    }
+        //}
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Touristy.Core.DataServices;
 using Touristy.Core.Domain;
+using Touristy.Core.Enums;
 using Touristy.Core.Models;
 
 namespace Touristy.Core.Processors
@@ -20,13 +21,23 @@ namespace Touristy.Core.Processors
             };
 
             var availableRools = _roomBookingService.GetAvailableRooms(bookingRequest.Date);
-            
+            var result = CreateRoomBookingObject<RoomBookingResult>(bookingRequest);
+
             if (availableRools.Any())
             {
-                _roomBookingService.Save(CreateRoomBookingObject<RoomBooking>(bookingRequest));
+                var room = availableRools.First();
+                var roomBooking = CreateRoomBookingObject<RoomBooking>(bookingRequest);
+                roomBooking.RoomId = room.Id;
+                _roomBookingService.Save(roomBooking);
+
+                result.Flag = BookingResultFlag.Success;
+            }
+            else 
+            {
+                result.Flag = BookingResultFlag.Failure;
             }
 
-            return CreateRoomBookingObject<RoomBookingResult>(bookingRequest);
+            return result;
         }
 
         private TRoomBooking CreateRoomBookingObject<TRoomBooking>(RoomBookingRequest bookingRequest) where TRoomBooking
