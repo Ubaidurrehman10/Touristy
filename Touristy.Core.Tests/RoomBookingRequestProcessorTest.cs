@@ -1,10 +1,10 @@
 ﻿using Moq;
-using Shouldly;
 using Touristy.Core.DataServices;
-using Touristy.Core.Domain;
 using Touristy.Core.Enums;
 using Touristy.Core.Models;
 using Touristy.Core.Processors;
+using Touristy.Domain;
+using Shouldly;
 
 namespace Touristy.Core.Tests
 {

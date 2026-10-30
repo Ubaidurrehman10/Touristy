@@ -1,4 +1,5 @@
 ﻿using Touristy.Core.Enums;
+using Touristy.Domain.BaseModels;
 
 namespace Touristy.Core.Models
 {

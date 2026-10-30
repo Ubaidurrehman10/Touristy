@@ -1,4 +1,7 @@
 <Solution>
   <Project Path="Touristy.Core.Tests/Touristy.Core.Tests.csproj" />
   <Project Path="Touristy.Core/Touristy.Core.csproj" />
+  <Project Path="Touristy.Domain/Touristy.Domain.csproj" Id="7ab44d58-33cd-4070-9a04-09641659f561" />
+  <Project Path="Touristy.Persistence.Tests/Touristy.Persistence.Tests.csproj" Id="9188146a-8f80-440b-8bec-25aacd8cbd65" />
+  <Project Path="Touristy.Persistence/Touristy.Persistence.csproj" Id="52a75b5f-64bc-4e12-9ba4-ac51519ee63c" />
 </Solution>

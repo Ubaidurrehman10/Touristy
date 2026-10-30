@@ -1,4 +1,6 @@
-﻿namespace Touristy.Core.Models
+﻿using Touristy.Domain.BaseModels;
+
+namespace Touristy.Core.Models
 {
     public class RoomBookingRequest : RoomBookingBase
     {

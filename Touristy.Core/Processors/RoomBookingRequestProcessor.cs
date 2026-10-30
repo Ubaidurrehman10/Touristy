@@ -1,5 +1,6 @@
 ﻿using Touristy.Core.DataServices;
-using Touristy.Core.Domain;
+using Touristy.Domain;
+using Touristy.Domain.BaseModels;
 using Touristy.Core.Enums;
 using Touristy.Core.Models;
 

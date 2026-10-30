@@ -1,4 +1,4 @@
-﻿using Touristy.Core.Domain;
+﻿using Touristy.Domain;
 
 namespace Touristy.Core.DataServices
 {
