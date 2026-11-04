@@ -6,7 +6,7 @@ using Touristy.Core.Models;
 
 namespace Touristy.Core.Processors
 {
-    public class RoomBookingRequestProcessor
+    public class RoomBookingRequestProcessor : IRoomBookingRequestProcessor
     {
         private readonly IRoomBookingService _roomBookingService;
         public RoomBookingRequestProcessor(IRoomBookingService roomBookingService)
@@ -18,8 +18,9 @@ namespace Touristy.Core.Processors
         {
             if (bookingRequest is null)
             {
-                throw new ArgumentNullException("bookingRequest");    
-            };
+                throw new ArgumentNullException("bookingRequest");
+            }
+            ;
 
             var availableRooms = _roomBookingService.GetAvailableRooms(bookingRequest.Date);
             var result = CreateRoomBookingObject<RoomBookingResult>(bookingRequest);
@@ -34,7 +35,7 @@ namespace Touristy.Core.Processors
                 result.RoomBookingId = roomBooking.Id;
                 result.Flag = BookingResultFlag.Success;
             }
-            else 
+            else
             {
                 result.Flag = BookingResultFlag.Failure;
             }
