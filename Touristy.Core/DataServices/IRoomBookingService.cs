@@ -7,5 +7,7 @@ namespace Touristy.Core.DataServices
         void Save(RoomBooking roomBooking);
 
         IEnumerable<Room> GetAvailableRooms(DateTime date);
+
+        IEnumerable<Room> GetRooms();
     }
 }

@@ -1,7 +1,10 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
+using Touristy.Core.DataServices;
 using Touristy.Core.Processors;
+using Touristy.Persistence;
+using Touristy.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,11 +28,15 @@ var connString = "DataSource=:memory:";
 var conn = new SqliteConnection(connString);
 conn.Open();
 
-builder.Services.AddDbContext<Touristy.Persistence.TouristyAppDbContext>(options =>
+builder.Services.AddDbContext<TouristyAppDbContext>(options =>
 {
     options.UseSqlite(conn);
 });
 
+CreateDatabase.EnsureDatabaseCreated(conn);
+
+
+builder.Services.AddScoped<IRoomBookingService, RoomBookingService>();
 builder.Services.AddScoped<IRoomBookingRequestProcessor, RoomBookingRequestProcessor>();
 
 var app = builder.Build();
@@ -39,6 +46,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

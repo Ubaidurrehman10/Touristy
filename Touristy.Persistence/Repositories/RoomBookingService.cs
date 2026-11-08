@@ -21,5 +21,10 @@ namespace Touristy.Persistence.Repositories
             _Context.Add(roomBooking);
             _Context.SaveChanges();
         }
+
+        public IEnumerable<Room> GetRooms()
+        {
+            return _Context.Rooms.ToList();
+        }
     }
 }
