@@ -35,7 +35,6 @@ builder.Services.AddDbContext<TouristyAppDbContext>(options =>
 
 CreateDatabase.EnsureDatabaseCreated(conn);
 
-
 builder.Services.AddScoped<IRoomBookingService, RoomBookingService>();
 builder.Services.AddScoped<IRoomBookingRequestProcessor, RoomBookingRequestProcessor>();
 
