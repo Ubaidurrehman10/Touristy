@@ -10,7 +10,6 @@ namespace Touristy.Persistence
             var builder = new DbContextOptionsBuilder<TouristyAppDbContext>();
             builder.UseSqlite(conn);
 
-
             using var context = new TouristyAppDbContext(builder.Options);
             context.Database.EnsureCreated();
         }
