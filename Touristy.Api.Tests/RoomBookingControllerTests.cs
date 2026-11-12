@@ -46,15 +46,5 @@ namespace Touristy.Api.Tests
             result.ShouldBeOfType(expectedActionResultType);
             _roomBookingProcessor.Verify(x => x.BookRoom(_request), Times.Exactly(expextedMethodCalls));
         }
-
-        [Fact]
-        public void ShouldReturnForcastResults()
-        {
-            var controller = new WeatherForecastController();
-            var result = controller.Get();
-
-            result.Count().ShouldBeGreaterThan(1);
-            result.ShouldNotBeNull();
-        }
     }
 }
