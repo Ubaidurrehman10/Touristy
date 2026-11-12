@@ -1,6 +1,25 @@
 @Touristy.Api_HostAddress = http://localhost:5128
 
-GET {{Touristy.Api_HostAddress}}/weatherforecast/
+### Book a room (valid request -> 200 OK)
+POST {{Touristy.Api_HostAddress}}/api/RoomBooking
+Content-Type: application/json
 Accept: application/json
+
+{
+  "name": "Ubaid ur Rehman",
+  "email": "ubaid@example.com",
+  "date": "2027-01-15"
+}
+
+### Invalid request: bad email and past date (-> 400 Bad Request)
+POST {{Touristy.Api_HostAddress}}/api/RoomBooking
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Ubaid ur Rehman",
+  "email": "not-an-email",
+  "date": "2020-01-01"
+}
 
 ###
